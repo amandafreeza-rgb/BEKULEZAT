@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>BekuLezat – Shaken Frozen Food</title>
+  <meta name="description" content="Frozen food siap kocok dengan sambal home-made. Tersedia juga paket mentah vakum untuk stok di kos.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@600;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- ========== NAVBAR ========== -->
+<header class="navbar">
+  <a href="#beranda" class="logo">Beku<span>Lezat</span></a>
+  <button class="hamburger" id="hamburger" aria-label="Buka menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+  <nav class="nav-links" id="navLinks">
+    <a href="#tentang">Tentang</a>
+    <a href="#keunggulan">Keunggulan</a>
+    <a href="#menu">Menu</a>
+    <a href="#testimoni">Testimoni</a>
+    <a href="#pesan">Pesan</a>
+  </nav>
+  <button class="cart-btn" id="cartToggle" aria-label="Buka keranjang">
+    Keranjang <span class="badge" id="cartCount">0</span>
+  </button>
+</header>
+
+<main>
+  <!-- ========== HERO ========== -->
+  <section class="hero" id="beranda">
+    <div class="hero-text">
+      <h1>Digoreng, dikocok, <br>langsung pedas gurih.</h1>
+      <p>Bakso, sosis, nugget, dan otak-otak beku yang digoreng lalu dikocok bareng sambal home-made. Mau stok di kos? Ada juga paket mentah vakum.</p>
+      <a href="#menu" class="btn">Lihat Menu</a>
+      <a href="#pesan" class="btn btn-ghost">Pesan Sekarang</a>
+    </div>
+    <img class="hero-img" alt="Makanan pedas siap santap"
+         src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?auto=format&fit=crop&w=800&q=70">
+  </section>
+
+  <!-- ========== TENTANG BRAND ========== -->
+  <section class="section" id="tentang">
+    <div class="about">
+      <img alt="Dapur BekuLezat" src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?auto=format&fit=crop&w=700&q=70">
+      <div>
+        <h2>Tentang BekuLezat</h2>
+        <!-- Ubah teks brand di sini -->
+        <p>BekuLezat lahir dari kebiasaan anak kos yang pengin jajan pedas tapi malas keluar. Kami menggoreng olahan beku pilihan, lalu mengocoknya dengan sambal buatan sendiri sampai rata dan renyah.</p>
+        <p>Pilih yang siap santap, atau bawa pulang paket mentah vakum untuk disimpan di freezer dan digoreng kapan saja.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== KEUNGGULAN ========== -->
+  <section class="section alt" id="keunggulan">
+    <h2 class="center">Kenapa BekuLezat?</h2>
+    <div class="grid3">
+      <article class="feature">
+        <h3>Kemasan Hygienic</h3>
+        <p>Dikemas tertutup rapat dan vakum, jadi aman, bersih, dan tahan lama di freezer.</p>
+      </article>
+      <article class="feature">
+        <h3>Sambal Home-made</h3>
+        <p>Diracik sendiri tanpa sambal botolan. Pilihan rasa dari original sampai level setan.</p>
+      </article>
+      <article class="feature">
+        <h3>Praktis</h3>
+        <p>Tinggal goreng atau rebus, kocok, lalu makan. Cocok buat anak kos dan yang super sibuk.</p>
+      </article>
+    </div>
+  </section>
+
+  <!-- ========== KATALOG MENU ========== -->
+  <!-- Edit harga di atribut value pada <option>. Edit nama di data-name. -->
+  <section class="section" id="menu">
+    <h2 class="center">Menu Favorit</h2>
+    <p class="center sub">Pilih siap santap (shaken) atau paket mentah vakum.</p>
+    <div class="menu-grid">
+
+      <article class="card" data-name="Pangsit Goreng">
+        <img loading="lazy" alt="Pangsit Goreng" src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Pangsit Goreng</h3>
+          <p>Renyah di luar, isi ayam gurih.</p>
+          <select class="variant">
+            <option value="12000">Siap santap (shaken) – Rp12.000</option>
+            <option value="10000">Mentah vakum – Rp10.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Pangsit Rebus Chili Oil">
+        <img loading="lazy" alt="Pangsit Rebus Chili Oil" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Pangsit Rebus Chili Oil</h3>
+          <p>Pangsit lembut disiram minyak cabai wangi.</p>
+          <select class="variant">
+            <option value="15000">Siap santap (shaken) – Rp15.000</option>
+            <option value="12000">Mentah vakum – Rp12.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Mie Jebew">
+        <img loading="lazy" alt="Mie Jebew" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Mie Jebew</h3>
+          <p>Mie pedas gurih dengan topping melimpah.</p>
+          <select class="variant">
+            <option value="13000">Siap santap (shaken) – Rp13.000</option>
+            <option value="10000">Mentah vakum – Rp10.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Tempura">
+        <img loading="lazy" alt="Tempura" src="https://images.unsplash.com/photo-1581184953963-d15972933db1?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Tempura</h3>
+          <p>Berbalut tepung tipis, garing sampai gigitan terakhir.</p>
+          <select class="variant">
+            <option value="14000">Siap santap (shaken) – Rp14.000</option>
+            <option value="11000">Mentah vakum – Rp11.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Cilok">
+        <img loading="lazy" alt="Cilok" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Cilok</h3>
+          <p>Kenyal, dikocok dengan bumbu kacang pedas.</p>
+          <select class="variant">
+            <option value="10000">Siap santap (shaken) – Rp10.000</option>
+            <option value="8000">Mentah vakum – Rp8.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Seblak">
+        <img loading="lazy" alt="Seblak" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Seblak</h3>
+          <p>Kerupuk, sayur, dan kencur dengan kuah pedas.</p>
+          <select class="variant">
+            <option value="15000">Siap santap (shaken) – Rp15.000</option>
+            <option value="12000">Mentah vakum – Rp12.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+      <article class="card" data-name="Roti Bakar">
+        <img loading="lazy" alt="Roti Bakar" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=500&q=70">
+        <div class="card-body">
+          <h3>Roti Bakar</h3>
+          <p>Roti tebal panggang dengan isian manis atau gurih.</p>
+          <select class="variant">
+            <option value="13000">Siap santap – Rp13.000</option>
+          </select>
+          <button class="btn add-btn">Tambah ke Keranjang</button>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- ========== TESTIMONI (SLIDER) ========== -->
+  <section class="section alt" id="testimoni">
+    <h2 class="center">Kata Mereka</h2>
+    <div class="slider">
+      <button class="slide-btn" id="prevBtn" aria-label="Testimoni sebelumnya">&#8249;</button>
+      <div class="slider-window">
+        <div class="slider-track" id="sliderTrack">
+          <figure class="slide">
+            <img alt="Rani" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=70">
+            <blockquote>Seblaknya pedasnya pas, bumbunya meresap. Stok vakumnya juga awet di freezer kosan.</blockquote>
+            <figcaption>Rani, Mahasiswi</figcaption>
+          </figure>
+          <figure class="slide">
+            <img alt="Dimas" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=70">
+            <blockquote>Pangsit gorengnya renyah banget, sambalnya beda dari yang lain. Sudah order tiga kali.</blockquote>
+            <figcaption>Dimas, Anak Kos</figcaption>
+          </figure>
+          <figure class="slide">
+            <img alt="Sinta" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=70">
+            <blockquote>Cilok shaken favoritku. Kemasannya rapi dan bersih, pengirimannya cepat.</blockquote>
+            <figcaption>Sinta, Karyawan</figcaption>
+          </figure>
+        </div>
+      </div>
+      <button class="slide-btn" id="nextBtn" aria-label="Testimoni berikutnya">&#8250;</button>
+    </div>
+    <div class="dots" id="sliderDots"></div>
+  </section>
+
+  <!-- ========== FORM PEMESANAN + PEMBAYARAN ========== -->
+  <section class="section" id="pesan">
+    <h2 class="center">Pesan Sekarang</h2>
+    <div class="order-wrap">
+
+      <!-- Ringkasan pesanan -->
+      <div class="panel">
+        <h3>Ringkasan Pesanan</h3>
+        <ul class="cart-list" id="summaryList"></ul>
+        <p class="total-row">Total <strong id="summaryTotal">Rp0</strong></p>
+      </div>
+
+      <!-- Form -->
+      <form class="panel" id="orderForm" novalidate>
+        <h3>Data Pemesan</h3>
+        <label>Nama lengkap
+          <input type="text" id="nama" placeholder="Contoh: Budi Santoso" autocomplete="name">
+        </label>
+        <label>Nomor WhatsApp
+          <input type="tel" id="hp" placeholder="08xxxxxxxxxx" autocomplete="tel">
+        </label>
+        <label>Alamat pengantaran
+          <textarea id="alamat" rows="3" placeholder="Nama kos / jalan / patokan"></textarea>
+        </label>
+        <label>Pilihan sambal
+          <select id="sambal">
+            <option>Original</option>
+            <option>Pedas Manis</option>
+            <option>Balado</option>
+            <option>Level Setan</option>
+          </select>
+        </label>
+        <label>Catatan (opsional)
+          <input type="text" id="catatan" placeholder="Contoh: sambal dipisah">
+        </label>
+        <p class="error" id="formError" role="alert"></p>
+      </form>
+
+      <!-- Pembayaran -->
+      <div class="panel pay">
+        <h3>Pembayaran</h3>
+        <p>Scan QRIS di bawah, lalu kirim bukti bayar lewat WhatsApp.</p>
+        <!-- Ganti src dengan foto QRIS toko kamu, misalnya "qris.jpg" -->
+        <img class="qris" alt="QRIS BekuLezat" src="https://placehold.co/260x260/png?text=QRIS+BekuLezat">
+        <button class="btn full" id="checkoutBtn" type="button">Kirim Pesanan via WhatsApp</button>
+      </div>
+
+    </div>
+  </section>
+</main>
+
+<footer class="footer">
+  <p>&copy; 2026 BekuLezat. Dibuat untuk proyek kuliah.</p>
+</footer>
+
+<!-- ========== KERANJANG (DRAWER) ========== -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="cartDrawer" aria-label="Keranjang belanja">
+  <div class="drawer-head">
+    <h3>Keranjang Kamu</h3>
+    <button class="close" id="cartClose" aria-label="Tutup keranjang">&times;</button>
+  </div>
+  <ul class="cart-list" id="cartList"></ul>
+  <div class="drawer-foot">
+    <p class="total-row">Total <strong id="cartTotal">Rp0</strong></p>
+    <a href="#pesan" class="btn full" id="goOrder">Lanjut ke Pemesanan</a>
+  </div>
+</aside>
+
+<script src="script.js"></script>
+</body>
+</html>
