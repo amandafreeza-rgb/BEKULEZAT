@@ -91,112 +91,167 @@
   </section>
 
   <!-- ========== KATALOG MENU ========== -->
-  <!-- Edit harga di atribut value pada <option>. Edit nama di data-name. -->
-  <section class="section" id="menu">
-    <h2 class="center">Menu Favorit</h2>
-    <p class="center sub">Pilih siap santap (shaken) atau paket mentah vakum.</p>
-    <div class="menu-grid">
+    <section class="section" id="menu">
+      <h2 class="center">Menu Favorit</h2>
+      <p class="center sub">Pilih siap santap (shaken) atau paket mentah vakum.</p>
+      
+      <div class="menu-grid">
+        
+        <!-- 1. Pangsit Goreng -->
+        <article class="card" data-name="Pangsit Goreng">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Pangsit Goreng Siap Santap" src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Pangsit Goreng Mentah Vakum" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Pangsit Goreng</h3>
+            <p>Renyah di luar, isi ayam gurih.</p>
+            <div class="card-price">Rp 10.000 - Rp 12.000</div>
+            <select class="variant">
+              <option value="12000">Siap santap (shaken) – Rp12.000</option>
+              <option value="10000">Mentah vakum – Rp10.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-      <article class="card" data-name="Pangsit Goreng">
-        <img loading="lazy" alt="Pangsit Goreng" src="https://images.unsplash.com/photo-1496116218417-1a781b1c416c?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Pangsit Goreng</h3>
-          <p>Renyah di luar, isi ayam gurih.</p>
-          <div class="card-price">Rp 10.000 - Rp 12.000</div>
-          <select class="variant">
-            <option value="12000">Siap santap (shaken) – Rp12.000</option>
-            <option value="10000">Mentah vakum – Rp10.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
+        <!-- 2. Pangsit Rebus Chili Oil -->
+        <article class="card" data-name="Pangsit Rebus Chili Oil">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Pangsit Rebus Siap Santap" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Pangsit Rebus Mentah Vakum" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Pangsit Rebus Chili Oil</h3>
+            <p>Pangsit lembut disiram minyak cabai wangi.</p>
+            <div class="card-price">Rp 12.000 - Rp 15.000</div>
+            <select class="variant">
+              <option value="15000">Siap santap (shaken) – Rp15.000</option>
+              <option value="12000">Mentah vakum – Rp12.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-      <article class="card" data-name="Pangsit Rebus Chili Oil">
-        <img loading="lazy" alt="Pangsit Rebus Chili Oil" src="https://images.unsplash.com/photo-1563245372-f21724e3856d?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Pangsit Rebus Chili Oil</h3>
-          <p>Pangsit lembut disiram minyak cabai wangi.</p>
-          <div class="card-price">Rp 12.000 - Rp 15.000</div>
-          <select class="variant">
-            <option value="15000">Siap santap (shaken) – Rp15.000</option>
-            <option value="12000">Mentah vakum – Rp12.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
+        <!-- 3. Mie Jebew -->
+        <article class="card" data-name="Mie Jebew">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Mie Jebew Siap Santap" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Mie Jebew Mentah Vakum" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Mie Jebew</h3>
+            <p>Mie pedas gurih dengan topping melimpah.</p>
+            <div class="card-price">Rp 10.000 - Rp 13.000</div>
+            <select class="variant">
+              <option value="13000">Siap santap (shaken) – Rp13.000</option>
+              <option value="10000">Mentah vakum – Rp10.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-      <article class="card" data-name="Mie Jebew">
-        <img loading="lazy" alt="Mie Jebew" src="https://images.unsplash.com/photo-1569718212165-3a8278d5f624?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Mie Jebew</h3>
-          <p>Mie pedas gurih dengan topping melimpah.</p>
-          <div class="card-price">Rp 10.000 - Rp 13.000</div>
-          <select class="variant">
-            <option value="13000">Siap santap (shaken) – Rp13.000</option>
-            <option value="10000">Mentah vakum – Rp10.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
+        <!-- 4. Tempura -->
+        <article class="card" data-name="Tempura">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Tempura Siap Santap" src="https://images.unsplash.com/photo-1581184953963-d15972933db1?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Tempura Mentah Vakum" src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Tempura</h3>
+            <p>Berbalut tepung tipis, garing sampai gigitan terakhir.</p>
+            <div class="card-price">Rp 11.000 - Rp 14.000</div>
+            <select class="variant">
+              <option value="14000">Siap santap (shaken) – Rp14.000</option>
+              <option value="11000">Mentah vakum – Rp11.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-      <article class="card" data-name="Tempura">
-        <img loading="lazy" alt="Tempura" src="https://images.unsplash.com/photo-1581184953963-d15972933db1?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Tempura</h3>
-          <p>Berbalut tepung tipis, garing sampai gigitan terakhir.</p>
-          <div class="card-price">Rp 11.000 - Rp 14.000</div>
-          <select class="variant">
-            <option value="14000">Siap santap (shaken) – Rp14.000</option>
-            <option value="11000">Mentah vakum – Rp11.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
+        <!-- 5. Cilok -->
+        <article class="card" data-name="Cilok">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Cilok Siap Santap" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Cilok Mentah Vakum" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Cilok</h3>
+            <p>Kenyal, dikocok dengan bumbu kacang pedas.</p>
+            <div class="card-price">Rp 8.000 - Rp 10.000</div>
+            <select class="variant">
+              <option value="10000">Siap santap (shaken) – Rp10.000</option>
+              <option value="8000">Mentah vakum – Rp8.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-      <article class="card" data-name="Cilok">
-        <img loading="lazy" alt="Cilok" src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Cilok</h3>
-          <p>Kenyal, dikocok dengan bumbu kacang pedas.</p>
-          <div class="card-price">Rp 8.000 - Rp 10.000</div>
-          <select class="variant">
-            <option value="10000">Siap santap (shaken) – Rp10.000</option>
-            <option value="8000">Mentah vakum – Rp8.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
+        <!-- 6. Seblak -->
+        <article class="card" data-name="Seblak">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Seblak Siap Santap" src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Seblak Mentah Vakum" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Seblak</h3>
+            <p>Kerupuk, sayur, dan kencur dengan kuah pedas.</p>
+            <div class="card-price">Rp 12.000 - Rp 15.000</div>
+            <select class="variant">
+              <option value="15000">Siap santap (shaken) – Rp15.000</option>
+              <option value="12000">Mentah vakum – Rp12.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-      <article class="card" data-name="Seblak">
-  <img loading="lazy" alt="Seblak" src="...">
-  <div class="card-body">
-    <h3>Seblak</h3>
-    <p>Kerupuk, sayur, dan kencur dengan kuah pedas.</p>
-    
-    <!-- TAMBAHKAN TEKS HARGA DI SINI -->
-    <div class="card-price">Mulai Rp 12.000</div> 
+        <!-- 7. Roti Bakar -->
+        <article class="card" data-name="Roti Bakar">
+          <div class="card-image-container">
+            <div class="card-image-track">
+              <img loading="lazy" alt="Roti Bakar Siap Santap" src="https://images.unsplash.com/photo-1554efaa41-3832049d5b78?auto=format&fit=crop&w=500&q=70">
+              <img loading="lazy" alt="Roti Bakar Mentah Vakum" src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&w=500&q=70">
+            </div>
+            <button class="card-img-btn card-img-prev" aria-label="Sebelumnya">&#10094;</button>
+            <button class="card-img-btn card-img-next" aria-label="Berikutnya">&#10095;</button>
+          </div>
+          <div class="card-body">
+            <h3>Roti Bakar</h3>
+            <p>Roti tebal panggang dengan isian manis atau gurih.</p>
+            <div class="card-price">Rp 10.000 - Rp 13.000</div>
+            <select class="variant">
+              <option value="13000">Siap santap (shaken) – Rp13.000</option>
+              <option value="10000">Mentah vakum – Rp10.000</option>
+            </select>
+            <button class="btn add-btn">Tambah ke Keranjang</button>
+          </div>
+        </article>
 
-    <select class="variant-select">
-      <option value="15000">Siap santap (shaken) - Rp15.000</option>
-      <option value="12000">Mentah vakum - Rp12.000</option>
-    </select>
-    <button class="btn btn-ghost add-cart-btn">Tambah ke Keranjang</button>
-  </div>
-</article>
-
-      <article class="card" data-name="Roti Bakar">
-        <img loading="lazy" alt="Roti Bakar" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Roti Bakar</h3>
-          <p>Roti tebal panggang dengan isian manis atau gurih.</p>
-          <select class="variant">
-            <option value="13000">Siap santap – Rp13.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
-
-    </div>
+      </div>
   </section>
 
 <!-- ========== TESTIMONI ========== -->
@@ -318,6 +373,31 @@
   </div>
 </aside>
 
-<script src="script.js"></script>
+<!-- SCRIPT DARK/LIGHT MODE INSTAN -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      const themeToggle = document.getElementById("themeToggle");
+      const themeIcon = themeToggle ? themeToggle.querySelector(".theme-icon") : null;
+
+      // Cek memori tema sebelumnya
+      if (localStorage.getItem("theme") === "dark") {
+        document.body.classList.add("dark-mode");
+        if (themeIcon) themeIcon.textContent = "☀️";
+      }
+
+      // Saat tombol diklik
+      if (themeToggle) {
+        themeToggle.addEventListener("click", function () {
+          document.body.classList.toggle("dark-mode");
+          const isDark = document.body.classList.contains("dark-mode");
+          
+          if (themeIcon) {
+            themeIcon.textContent = isDark ? "☀️" : "🌙";
+          }
+          localStorage.setItem("theme", isDark ? "dark" : "light");
+        });
+      }
+    });
+  </script>
 </body>
 </html>

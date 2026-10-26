@@ -183,29 +183,76 @@ $("checkoutBtn").addEventListener("click", () => {
 renderCart();
 
 // ========== LOGIKA DARK / LIGHT MODE ==========
-const themeToggleBtn = document.getElementById('themeToggle');
-const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('.theme-icon') : null;
+document.addEventListener('DOMContentLoaded', () => {
+  const themeToggleBtn = document.getElementById('themeToggle');
+  const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('.theme-icon') : null;
 
-// Cek simpanan tema dari pengunjung sebelumnya
-const currentTheme = localStorage.getItem('theme');
-if (currentTheme === 'dark') {
-  document.body.classList.add('dark-mode');
-  if (themeIcon) themeIcon.textContent = '☀️';
-}
+  // Cek simpanan tema dari sesi sebelumnya
+  const currentTheme = localStorage.getItem('theme');
+  if (currentTheme === 'dark') {
+    document.body.classList.add('dark-mode');
+    if (themeIcon) themeIcon.textContent = '☀️';
+  }
 
-// Event listener saat tombol diklik
-if (themeToggleBtn) {
-  themeToggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark-mode');
-    
-    const isDarkMode = document.body.classList.contains('dark-mode');
-    
-    // Ubah ikon tombol (Bulan 🌙 / Matahari ☀️)
-    if (themeIcon) {
-      themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+  // Event listener saat tombol diklik
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark-mode');
+      
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      
+      // Ubah ikon tombol (Bulan 🌙 / Matahari ☀️)
+      if (themeIcon) {
+        themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+      }
+      
+      // Simpan pilihan ke localStorage
+      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+    });
+  }
+});
+
+// ========== LOGIKA SLIDER GAMBAR & SINKRONISASI VARIAN KARTU MENU ==========
+document.querySelectorAll('.card').forEach(card => {
+  const track = card.querySelector('.card-image-track');
+  if (!track) return;
+  
+  const imgs = track.querySelectorAll('img');
+  const prevBtn = card.querySelector('.card-img-prev');
+  const nextBtn = card.querySelector('.card-img-next');
+  const variantSelect = card.querySelector('.variant');
+  
+  let currentIndex = 0;
+
+  function updateSlide(index) {
+    if (index < 0) {
+      currentIndex = imgs.length - 1;
+    } else if (index >= imgs.length) {
+      currentIndex = 0;
+    } else {
+      currentIndex = index;
     }
+    track.style.transform = `translateX(-${currentIndex * 100}%)`;
     
-    // Simpan pilihan ke localStorage
-    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
-  });
-}
+    // Sinkronisasi otomatis dropdown varian jika gambar digeser
+    if (variantSelect) {
+      variantSelect.selectedIndex = currentIndex;
+    }
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => updateSlide(currentIndex + 1));
+  }
+  
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => updateSlide(currentIndex - 1));
+  }
+
+  // Jika dropdown varian diubah, gambar ikut bergeser otomatis
+  if (variantSelect) {
+    variantSelect.addEventListener('change', (e) => {
+      const selectedIndex = e.target.selectedIndex;
+      updateSlide(selectedIndex);
+    });
+  }
+});
