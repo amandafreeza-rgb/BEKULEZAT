@@ -102,6 +102,7 @@
         <div class="card-body">
           <h3>Pangsit Goreng</h3>
           <p>Renyah di luar, isi ayam gurih.</p>
+          <div class="card-price">Rp 10.000 - Rp 12.000</div>
           <select class="variant">
             <option value="12000">Siap santap (shaken) – Rp12.000</option>
             <option value="10000">Mentah vakum – Rp10.000</option>
@@ -115,6 +116,7 @@
         <div class="card-body">
           <h3>Pangsit Rebus Chili Oil</h3>
           <p>Pangsit lembut disiram minyak cabai wangi.</p>
+          <div class="card-price">Rp 12.000 - Rp 15.000</div>
           <select class="variant">
             <option value="15000">Siap santap (shaken) – Rp15.000</option>
             <option value="12000">Mentah vakum – Rp12.000</option>
@@ -128,6 +130,7 @@
         <div class="card-body">
           <h3>Mie Jebew</h3>
           <p>Mie pedas gurih dengan topping melimpah.</p>
+          <div class="card-price">Rp 10.000 - Rp 13.000</div>
           <select class="variant">
             <option value="13000">Siap santap (shaken) – Rp13.000</option>
             <option value="10000">Mentah vakum – Rp10.000</option>
@@ -141,6 +144,7 @@
         <div class="card-body">
           <h3>Tempura</h3>
           <p>Berbalut tepung tipis, garing sampai gigitan terakhir.</p>
+          <div class="card-price">Rp 11.000 - Rp 14.000</div>
           <select class="variant">
             <option value="14000">Siap santap (shaken) – Rp14.000</option>
             <option value="11000">Mentah vakum – Rp11.000</option>
@@ -154,6 +158,7 @@
         <div class="card-body">
           <h3>Cilok</h3>
           <p>Kenyal, dikocok dengan bumbu kacang pedas.</p>
+          <div class="card-price">Rp 8.000 - Rp 10.000</div>
           <select class="variant">
             <option value="10000">Siap santap (shaken) – Rp10.000</option>
             <option value="8000">Mentah vakum – Rp8.000</option>
@@ -163,17 +168,21 @@
       </article>
 
       <article class="card" data-name="Seblak">
-        <img loading="lazy" alt="Seblak" src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=500&q=70">
-        <div class="card-body">
-          <h3>Seblak</h3>
-          <p>Kerupuk, sayur, dan kencur dengan kuah pedas.</p>
-          <select class="variant">
-            <option value="15000">Siap santap (shaken) – Rp15.000</option>
-            <option value="12000">Mentah vakum – Rp12.000</option>
-          </select>
-          <button class="btn add-btn">Tambah ke Keranjang</button>
-        </div>
-      </article>
+  <img loading="lazy" alt="Seblak" src="...">
+  <div class="card-body">
+    <h3>Seblak</h3>
+    <p>Kerupuk, sayur, dan kencur dengan kuah pedas.</p>
+    
+    <!-- TAMBAHKAN TEKS HARGA DI SINI -->
+    <div class="card-price">Mulai Rp 12.000</div> 
+
+    <select class="variant-select">
+      <option value="15000">Siap santap (shaken) - Rp15.000</option>
+      <option value="12000">Mentah vakum - Rp12.000</option>
+    </select>
+    <button class="btn btn-ghost add-cart-btn">Tambah ke Keranjang</button>
+  </div>
+</article>
 
       <article class="card" data-name="Roti Bakar">
         <img loading="lazy" alt="Roti Bakar" src="https://images.unsplash.com/photo-1567620905732-2d1ec7ab7445?auto=format&fit=crop&w=500&q=70">
@@ -190,34 +199,55 @@
     </div>
   </section>
 
-  <!-- ========== TESTIMONI (SLIDER) ========== -->
-  <section class="section alt" id="testimoni">
-    <h2 class="center">Kata Mereka</h2>
-    <div class="slider">
-      <button class="slide-btn" id="prevBtn" aria-label="Testimoni sebelumnya">&#8249;</button>
-      <div class="slider-window">
-        <div class="slider-track" id="sliderTrack">
-          <figure class="slide">
-            <img alt="Rani" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=200&q=70">
-            <blockquote>Seblaknya pedasnya pas, bumbunya meresap. Stok vakumnya juga awet di freezer kosan.</blockquote>
-            <figcaption>Rani, Mahasiswi</figcaption>
-          </figure>
-          <figure class="slide">
-            <img alt="Dimas" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=200&q=70">
-            <blockquote>Pangsit gorengnya renyah banget, sambalnya beda dari yang lain. Sudah order tiga kali.</blockquote>
-            <figcaption>Dimas, Anak Kos</figcaption>
-          </figure>
-          <figure class="slide">
-            <img alt="Sinta" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=200&q=70">
-            <blockquote>Cilok shaken favoritku. Kemasannya rapi dan bersih, pengirimannya cepat.</blockquote>
-            <figcaption>Sinta, Karyawan</figcaption>
-          </figure>
+<!-- ========== TESTIMONI ========== -->
+<section class="section" id="testimoni">
+  <h2 class="center">Kata Mereka</h2>
+  <p class="sub">Apa kata anak kos tentang keseruan Shaken Frozen Food BekuLezat?</p>
+  
+  <div class="slider">
+    <button class="slide-btn" id="prevSlide" aria-label="Sebelumnya">&#10094;</button>
+    <div class="slider-window">
+      <div class="slider-track" id="sliderTrack">
+        <!-- Slide 1 -->
+        <div class="slide">
+          <div class="slide-photos">
+            <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=300" alt="Review 1">
+            <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300" alt="Review 2">
+          </div>
+          <blockquote>"Seblaknya pedasnya pas, bumbunya meresap. Stok vakumnya juga awet di freezer kosan."</blockquote>
+          <figcaption>Rani, Mahasiswi</figcaption>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+          <div class="slide-photos">
+            <img src="https://images.unsplash.com/photo-1526318896980-cf78c08b247c?w=300" alt="Review 3">
+          </div>
+          <blockquote>"Pangsit rebus chili oil-nya juara banget buat teman nugas malam-malam. Praktis!"</blockquote>
+          <figcaption>Dimas, Mahasiswa</figcaption>
         </div>
       </div>
-      <button class="slide-btn" id="nextBtn" aria-label="Testimoni berikutnya">&#8250;</button>
     </div>
-    <div class="dots" id="sliderDots"></div>
-  </section>
+    <button class="slide-btn" id="nextSlide" aria-label="Berikutnya">&#10095;</button>
+  </div>
+  <div class="dots" id="sliderDots"></div>
+
+  <!-- Form Tambah Review & Foto (Maksimal 3 Foto) -->
+  <div class="review-form-box">
+    <h4>Tulis & Upload Review Kamu</h4>
+    <form id="reviewForm">
+      <label>Nama & Status:
+        <input type="text" id="reviewerName" placeholder="Contoh: Siska, Mahasiswa" required>
+      </label>
+      <label>Ulasan / Komentar:
+        <input type="text" id="reviewerText" placeholder="Tulis pendapatmu..." required>
+      </label>
+      <label>Upload Foto (Maksimal 3 foto):
+        <input type="file" id="reviewerPhotos" accept="image/*" multiple>
+      </label>
+      <button type="submit" class="btn full">Kirim Ulasan</button>
+    </form>
+  </div>
+</section>
 
   <!-- ========== FORM PEMESANAN + PEMBAYARAN ========== -->
   <section class="section" id="pesan">

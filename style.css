@@ -87,11 +87,45 @@ h2 { font-size: clamp(1.7rem, 4vw, 2.3rem); margin-bottom: 1rem; }
 .feature p { color: var(--muted); }
 
 /* ========== KATALOG ========== */
-.menu-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1.5rem; max-width: 1150px; margin: 0 auto; }
-.card { background: #fff; border: 1px solid var(--line); border-radius: var(--radius); overflow: hidden; display: flex; flex-direction: column; }
-.card img { height: 180px; width: 100%; object-fit: cover; }
-.card-body { padding: 1rem 1.1rem 1.2rem; display: flex; flex-direction: column; gap: 0.6rem; flex: 1; }
-.card-body p { color: var(--muted); font-size: 0.92rem; flex: 1; }
+.menu-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); 
+  gap: 1.8rem; 
+  max-width: 1200px; 
+  margin: 0 auto; 
+}
+.card { 
+  background: #fff; 
+  border: 1px solid var(--line); 
+  border-radius: var(--radius); 
+  overflow: hidden; 
+  display: flex; 
+  flex-direction: column; 
+  padding-bottom: 0.5rem;
+}
+.card img { 
+  height: 200px; 
+  width: 100%; 
+  object-fit: cover; 
+}
+.card-body { 
+  padding: 1.2rem; 
+  display: flex; 
+  flex-direction: column; 
+  gap: 0.6rem; 
+  flex: 1; 
+}
+.card-price {
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--red);
+  margin-top: 0.2rem;
+}
+.card-body p { 
+  color: var(--muted); 
+  font-size: 0.92rem; 
+  flex: 1; 
+}
 .card-body .btn { padding: 0.55rem 1rem; }
 
 /* ========== SELECT & FORM ========== */
@@ -274,4 +308,48 @@ body.dark-mode .footer {
 .theme-toggle:hover {
   transform: scale(1.08);
   border-color: var(--red);
+}
+
+/* ========== REVISI TAMPILAN FOTO TESTIMONI MENJADI KOTAK ========== */
+.slide img {
+  width: 140px;
+  height: 100px;
+  border-radius: 12px;
+  object-fit: cover;
+  margin: 0 auto 1rem;
+  border: 2px solid var(--line);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+/* Jika ingin menampilkan lebih dari 1 foto dalam satu review */
+.slide-photos {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.slide-photos img {
+  width: 90px;
+  height: 70px;
+  border-radius: 8px;
+  object-fit: cover;
+  border: 2px solid var(--line);
+}
+
+/* Styling Form Tambah Testimoni Pelanggan */
+.review-form-box {
+  max-width: 550px;
+  margin: 2rem auto 0;
+  background: var(--cream);
+  border: 1px solid var(--line);
+  padding: 1.5rem;
+  border-radius: var(--radius);
+  text-align: left;
+}
+.review-form-box h4 {
+  color: var(--red);
+  margin-bottom: 0.8rem;
+  font-size: 1.1rem;
 }
