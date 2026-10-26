@@ -183,3 +183,39 @@ label input, label select, label textarea { margin-top: 0.3rem; }
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; scroll-behavior: auto !important; }
 }
+
+/* =========== BACKGROUND ANIMASI EMOJI MELAYANG =========== */
+.food-bg-animation {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.floating-emoji {
+  position: absolute;
+  font-size: 2.2rem;
+  opacity: 0.12;
+  bottom: -10vh;
+  animation: floatUp 14s linear infinite;
+}
+
+.floating-emoji:nth-child(1) { left: 8%; animation-duration: 12s; animation-delay: 0s; }
+.floating-emoji:nth-child(2) { left: 22%; animation-duration: 16s; animation-delay: 3s; font-size: 2.8rem; }
+.floating-emoji:nth-child(3) { left: 38%; animation-duration: 13s; animation-delay: 1s; }
+.floating-emoji:nth-child(4) { left: 55%; animation-duration: 17s; animation-delay: 4s; font-size: 3.2rem; }
+.floating-emoji:nth-child(5) { left: 72%; animation-duration: 11s; animation-delay: 2s; }
+.floating-emoji:nth-child(6) { left: 88%; animation-duration: 19s; animation-delay: 5s; font-size: 2.5rem; }
+
+@keyframes floatUp {
+  0% {
+    transform: translateY(110vh) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-120vh) rotate(360deg);
+  }
+}
