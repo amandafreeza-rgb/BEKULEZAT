@@ -219,3 +219,59 @@ label input, label select, label textarea { margin-top: 0.3rem; }
     transform: translateY(-120vh) rotate(360deg);
   }
 }
+
+/* ========== DARK MODE VARIABLES & STYLES ========== */
+body.dark-mode {
+  --cream: #1a1210;
+  --beige: #261b17;
+  --ink: #f5efe6;
+  --muted: #c4b5b0;
+  --line: #3d2d27;
+}
+
+body.dark-mode .navbar {
+  background: rgba(26, 18, 16, 0.95);
+}
+
+body.dark-mode .card,
+body.dark-mode .panel {
+  background: #241714;
+  border-color: var(--line);
+}
+
+body.dark-mode select,
+body.dark-mode input,
+body.dark-mode textarea {
+  background: #1a1210;
+  color: #f5efe6;
+  border-color: var(--line);
+}
+
+body.dark-mode .hero {
+  background: linear-gradient(120deg, #261b17 60%, #3a1c15);
+}
+
+body.dark-mode .footer {
+  background: #120b0a;
+}
+
+/* Tombol Toggle Tema */
+.theme-toggle {
+  background: var(--beige);
+  border: 1px solid var(--line);
+  color: var(--ink);
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 1.2rem;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  transform: scale(1.08);
+  border-color: var(--red);
+}

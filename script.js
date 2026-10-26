@@ -181,3 +181,31 @@ $("checkoutBtn").addEventListener("click", () => {
 
 // Tampilkan keranjang kosong saat halaman pertama dibuka
 renderCart();
+
+// ========== LOGIKA DARK / LIGHT MODE ==========
+const themeToggleBtn = document.getElementById('themeToggle');
+const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('.theme-icon') : null;
+
+// Cek simpanan tema dari pengunjung sebelumnya
+const currentTheme = localStorage.getItem('theme');
+if (currentTheme === 'dark') {
+  document.body.classList.add('dark-mode');
+  if (themeIcon) themeIcon.textContent = '☀️';
+}
+
+// Event listener saat tombol diklik
+if (themeToggleBtn) {
+  themeToggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark-mode');
+    
+    const isDarkMode = document.body.classList.contains('dark-mode');
+    
+    // Ubah ikon tombol (Bulan 🌙 / Matahari ☀️)
+    if (themeIcon) {
+      themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
+    }
+    
+    // Simpan pilihan ke localStorage
+    localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+  });
+}
