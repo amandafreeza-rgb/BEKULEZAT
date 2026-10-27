@@ -469,3 +469,67 @@ body.dark-mode .theme-toggle {
   cursor: pointer;
   pointer-events: auto !important;
 }
+
+/* Gaya untuk Kontrol Jumlah ala ShopeeFood */
+.qty-controller {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: #ee4d2d; /* Warna ala Shopee */
+  color: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  font-weight: bold;
+  height: 40px;
+}
+
+.qty-btn {
+  background: transparent;
+  border: none;
+  color: #ffffff;
+  font-size: 18px;
+  width: 40px;
+  height: 100%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+
+.qty-btn:hover {
+  background: rgba(0, 0, 0, 0.15);
+}
+
+.qty-value {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+}
+
+/* Tombol Checkout Mini di bawah stepper ala ShopeeFood */
+.card-checkout-btn {
+  width: 100%;
+  margin-top: 8px;
+  background-color: #28a745; /* Warna hijau khas checkout */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, transform 0.1s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.card-checkout-btn:hover {
+  background-color: #218838;
+}
+
+.card-checkout-btn:active {
+  transform: scale(0.98);
+}

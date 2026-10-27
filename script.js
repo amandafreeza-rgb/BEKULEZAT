@@ -46,21 +46,93 @@ $("cartClose").addEventListener("click", () => toggleCart(false));
 overlay.addEventListener("click", () => toggleCart(false));
 $("goOrder").addEventListener("click", () => toggleCart(false));
 
-/* -------- 3. TAMBAH ITEM KE KERANJANG -------- */
-/* -------- 3. TAMBAH ITEM KE KERANJANG -------- */
+/* -------- 3. TAMBAH ITEM KE KERANJANG (Ala ShopeeFood & Checkout Mini) -------- */
 document.addEventListener("DOMContentLoaded", function () {
   if (typeof cart === "undefined") {
     window.cart = [];
   }
 
-  const buttons = document.querySelectorAll(".add-btn");
-  
-  buttons.forEach((btn) => {
+  function updateCardButton(card, name, variant, qty) {
+    const btnContainer = card.querySelector(".btn-container") || card.querySelector(".add-btn").parentElement;
+    
+    let controller = btnContainer.querySelector(".qty-controller");
+    let checkoutBtn = btnContainer.querySelector(".card-checkout-btn");
+    let addBtn = btnContainer.querySelector(".add-btn");
+
+    if (qty > 0) {
+      if (addBtn) addBtn.style.display = "none";
+
+      // 1. Buat atau perbarui Stepper (- qty +)
+      if (!controller) {
+        controller = document.createElement("div");
+        controller.className = "qty-controller";
+        controller.innerHTML = `
+          <button class="qty-btn qty-minus" type="button">-</button>
+          <span class="qty-value">${qty}</span>
+          <button class="qty-btn qty-plus" type="button">+</button>
+        `;
+        btnContainer.appendChild(controller);
+
+        controller.querySelector(".qty-minus").addEventListener("click", () => {
+          changeQty(card, name, variant, -1);
+        });
+
+        controller.querySelector(".qty-plus").addEventListener("click", () => {
+          changeQty(card, name, variant, 1);
+        });
+      } else {
+        controller.querySelector(".qty-value").innerText = qty;
+        controller.style.display = "flex";
+      }
+
+      // 2. Buat atau tampilkan Tombol Checkout Mini di bawah stepper
+      if (!checkoutBtn) {
+        checkoutBtn = document.createElement("button");
+        checkoutBtn.type = "button";
+        checkoutBtn.className = "card-checkout-btn";
+        checkoutBtn.innerHTML = `Checkout Sekarang ➔`;
+        btnContainer.appendChild(checkoutBtn);
+
+        // Aksi klik -> Scroll mulus ke form pembelian (#pesan)
+        checkoutBtn.addEventListener("click", () => {
+          const formPesan = document.getElementById("pesan");
+          if (formPesan) {
+            formPesan.scrollIntoView({ behavior: "smooth", block: "start" });
+          }
+        });
+      } else {
+        checkoutBtn.style.display = "flex";
+      }
+
+    } else {
+      if (controller) controller.style.display = "none";
+      if (checkoutBtn) checkoutBtn.style.display = "none";
+      if (addBtn) addBtn.style.display = "block";
+    }
+  }
+
+  function changeQty(card, name, variant, delta) {
+    const existingIndex = cart.findIndex((i) => i.name === name && i.variant === variant);
+    if (existingIndex > -1) {
+      cart[existingIndex].qty += delta;
+      if (cart[existingIndex].qty <= 0) {
+        cart.splice(existingIndex, 1);
+        updateCardButton(card, name, variant, 0);
+      } else {
+        updateCardButton(card, name, variant, cart[existingIndex].qty);
+      }
+    }
+    if (typeof renderCart === "function") {
+      renderCart();
+    }
+  }
+
+  document.querySelectorAll(".add-btn").forEach((btn) => {
+    const card = btn.closest(".card");
+    if (!card) return;
+
     btn.addEventListener("click", function (e) {
       e.preventDefault();
-      
-      const card = btn.closest(".card");
-      if (!card) return;
 
       const select = card.querySelector(".variant");
       const name = card.dataset.name || card.querySelector("h3")?.innerText || "Produk";
@@ -82,30 +154,21 @@ document.addEventListener("DOMContentLoaded", function () {
         }
       }
 
-      // Masukkan ke array keranjang
       const existingIndex = cart.findIndex((i) => i.name === name && i.variant === variant);
+      let currentQty = 1;
+
       if (existingIndex > -1) {
         cart[existingIndex].qty += 1;
+        currentQty = cart[existingIndex].qty;
       } else {
         cart.push({ name, variant, price, qty: 1 });
       }
 
-      // Update tampilan keranjang
+      updateCardButton(card, name, variant, currentQty);
+
       if (typeof renderCart === "function") {
         renderCart();
       }
-
-      // Efek visual tombol berhasil diklik
-      const originalText = btn.textContent;
-      btn.textContent = "Berhasil Ditambahkan! ✓";
-      btn.style.backgroundColor = "#28a745";
-      btn.style.color = "#ffffff";
-      
-      setTimeout(() => {
-        btn.textContent = originalText;
-        btn.style.backgroundColor = "";
-        btn.style.color = "";
-      }, 1200);
     });
   });
 });
