@@ -245,7 +245,6 @@ $("prevBtn").addEventListener("click", () => goTo(current - 1));
 goTo(0);
 
 /* -------- CHECKOUT: LANGSUNG KE WHATSAPP + CATAT ADMIN -------- */
-/* GANTI seluruh blok checkout lama dengan blok ini */
 document.addEventListener("DOMContentLoaded", function () {
   const checkoutBtn = document.getElementById("checkoutBtn");
   if (!checkoutBtn) return;
@@ -309,10 +308,10 @@ document.addEventListener("DOMContentLoaded", function () {
       `Bukti pembayaran saya lampirkan di chat ini ya kak.\n` +
       `Mohon segera diproses, terima kasih!`;
 
-    // 6. URL WhatsApp (pesan WAJIB di-encode dan ditempel sebagai ?text=)
+    // 6. URL WhatsApp
     const urlWhatsApp = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesanWA)}`;
 
-    // 7. Simpan ke LocalStorage untuk panel admin (dibungkus try/catch agar tidak menghalangi redirect)
+    // 7. Simpan ke LocalStorage untuk panel admin
     try {
       const newOrder = {
         id: "BK-" + Date.now().toString().slice(-6),
@@ -332,11 +331,11 @@ document.addEventListener("DOMContentLoaded", function () {
       console.warn("Gagal menyimpan pesanan ke localStorage:", err);
     }
 
-    // 8. Buka WhatsApp (langsung dari klik user agar tidak diblokir popup blocker)
+    // 8. Buka WhatsApp
     const win = window.open(urlWhatsApp, "_blank");
-    if (!win) window.location.href = urlWhatsApp; // fallback jika popup diblokir
+    if (!win) window.location.href = urlWhatsApp;
 
-    // 9. Kosongkan keranjang (pakai cart = [], BUKAN window.cart = [])
+    // 9. Kosongkan keranjang
     cart = [];
     renderCart();
 
@@ -352,26 +351,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const themeToggleBtn = document.getElementById('themeToggle');
   const themeIcon = themeToggleBtn ? themeToggleBtn.querySelector('.theme-icon') : null;
 
-  // Cek simpanan tema dari sesi sebelumnya
   const currentTheme = localStorage.getItem('theme');
   if (currentTheme === 'dark') {
     document.body.classList.add('dark-mode');
     if (themeIcon) themeIcon.textContent = '☀️';
   }
 
-  // Event listener saat tombol diklik
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
       document.body.classList.toggle('dark-mode');
-      
       const isDarkMode = document.body.classList.contains('dark-mode');
-      
-      // Ubah ikon tombol (Bulan 🌙 / Matahari ☀️)
       if (themeIcon) {
         themeIcon.textContent = isDarkMode ? '☀️' : '🌙';
       }
-      
-      // Simpan pilihan ke localStorage
       localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
     });
   }
@@ -390,6 +382,7 @@ document.querySelectorAll('.card').forEach(card => {
   let currentIndex = 0;
 
   function updateSlide(index) {
+    if (imgs.length === 0) return;
     if (index < 0) {
       currentIndex = imgs.length - 1;
     } else if (index >= imgs.length) {
@@ -399,8 +392,8 @@ document.querySelectorAll('.card').forEach(card => {
     }
     track.style.transform = `translateX(-${currentIndex * 100}%)`;
     
-    // Sinkronisasi otomatis dropdown varian jika gambar digeser
-    if (variantSelect) {
+    // Sinkronisasi otomatis dropdown HANYA JIKA jumlah opsi sama persis dengan jumlah gambar (multigambar)
+    if (variantSelect && variantSelect.options.length === imgs.length) {
       variantSelect.selectedIndex = currentIndex;
     }
   }
@@ -413,11 +406,14 @@ document.querySelectorAll('.card').forEach(card => {
     prevBtn.addEventListener('click', () => updateSlide(currentIndex - 1));
   }
 
-  // Jika dropdown varian diubah, gambar ikut bergeser otomatis
+  // Jika dropdown varian/level diubah, cegah bentrok dengan slider level sambal
   if (variantSelect) {
     variantSelect.addEventListener('change', (e) => {
       const selectedIndex = e.target.selectedIndex;
-      updateSlide(selectedIndex);
+      // Hanya geser slide jika jumlah gambar lebih dari 1 dan opsi selaras dengan jumlah gambar
+      if (imgs.length > 1 && selectedIndex < imgs.length) {
+        updateSlide(selectedIndex);
+      }
     });
   }
 });
