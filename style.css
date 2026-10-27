@@ -433,3 +433,39 @@ body.dark-mode .theme-toggle {
 
 .card-img-prev { left: 8px; }
 .card-img-next { right: 8px; }
+
+/* Memastikan tombol keranjang aktif dan bisa diklik */
+.card {
+  position: relative;
+  z-index: 1;
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.add-btn {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  pointer-events: auto !important;
+}
+
+/* Memastikan tombol keranjang aktif dan bisa diklik */
+.card {
+  position: relative;
+  z-index: 1;
+}
+
+.card-body {
+  position: relative;
+  z-index: 2;
+}
+
+.add-btn {
+  position: relative;
+  z-index: 10;
+  cursor: pointer;
+  pointer-events: auto !important;
+}

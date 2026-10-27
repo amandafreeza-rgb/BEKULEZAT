@@ -46,27 +46,67 @@ $("cartClose").addEventListener("click", () => toggleCart(false));
 overlay.addEventListener("click", () => toggleCart(false));
 $("goOrder").addEventListener("click", () => toggleCart(false));
 
-/* ---------- 3. TAMBAH ITEM KE KERANJANG ---------- */
-document.querySelectorAll(".add-btn").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const card = btn.closest(".card");
-    const select = card.querySelector(".variant");
-    const name = card.dataset.name;
-    const price = Number(select.value);
-    // Ambil label varian saja (sebelum tanda " – ")
-    const variant = select.options[select.selectedIndex].text.split(" – ")[0];
+/* -------- 3. TAMBAH ITEM KE KERANJANG -------- */
+/* -------- 3. TAMBAH ITEM KE KERANJANG -------- */
+document.addEventListener("DOMContentLoaded", function () {
+  if (typeof cart === "undefined") {
+    window.cart = [];
+  }
 
-    // Jika menu + varian yang sama sudah ada, tambah jumlahnya
-    const found = cart.find((i) => i.name === name && i.variant === variant);
-    if (found) found.qty++;
-    else cart.push({ name, variant, price, qty: 1 });
+  const buttons = document.querySelectorAll(".add-btn");
+  
+  buttons.forEach((btn) => {
+    btn.addEventListener("click", function (e) {
+      e.preventDefault();
+      
+      const card = btn.closest(".card");
+      if (!card) return;
 
-    renderCart();
+      const select = card.querySelector(".variant");
+      const name = card.dataset.name || card.querySelector("h3")?.innerText || "Produk";
+      
+      let price = 0;
+      let variant = "Standard";
 
-    // Umpan balik singkat pada tombol
-    const oldText = btn.textContent;
-    btn.textContent = "Ditambahkan";
-    setTimeout(() => (btn.textContent = oldText), 900);
+      if (select) {
+        price = Number(select.value) || 0;
+        const selectedOption = select.options[select.selectedIndex];
+        if (selectedOption) {
+          const text = selectedOption.text;
+          variant = text.includes("–") ? text.split("–")[0].trim() : (text.includes("-") ? text.split("-")[0].trim() : text);
+        }
+      } else {
+        const priceEl = card.querySelector(".card-price");
+        if (priceEl) {
+          price = Number(priceEl.innerText.replace(/[^0-9]/g, "")) || 0;
+        }
+      }
+
+      // Masukkan ke array keranjang
+      const existingIndex = cart.findIndex((i) => i.name === name && i.variant === variant);
+      if (existingIndex > -1) {
+        cart[existingIndex].qty += 1;
+      } else {
+        cart.push({ name, variant, price, qty: 1 });
+      }
+
+      // Update tampilan keranjang
+      if (typeof renderCart === "function") {
+        renderCart();
+      }
+
+      // Efek visual tombol berhasil diklik
+      const originalText = btn.textContent;
+      btn.textContent = "Berhasil Ditambahkan! ✓";
+      btn.style.backgroundColor = "#28a745";
+      btn.style.color = "#ffffff";
+      
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.backgroundColor = "";
+        btn.style.color = "";
+      }, 1200);
+    });
   });
 });
 

@@ -283,24 +283,6 @@
   </div>
   <div class="dots" id="sliderDots"></div>
 
-  <!-- Form Tambah Review & Foto (Maksimal 3 Foto) -->
-  <div class="review-form-box">
-    <h4>Tulis & Upload Review Kamu</h4>
-    <form id="reviewForm">
-      <label>Nama & Status:
-        <input type="text" id="reviewerName" placeholder="Contoh: Siska, Mahasiswa" required>
-      </label>
-      <label>Ulasan / Komentar:
-        <input type="text" id="reviewerText" placeholder="Tulis pendapatmu..." required>
-      </label>
-      <label>Upload Foto (Maksimal 3 foto):
-        <input type="file" id="reviewerPhotos" accept="image/*" multiple>
-      </label>
-      <button type="submit" class="btn full">Kirim Ulasan</button>
-    </form>
-  </div>
-</section>
-
   <!-- ========== FORM PEMESANAN + PEMBAYARAN ========== -->
   <section class="section" id="pesan">
     <h2 class="center">Pesan Sekarang</h2>
@@ -324,15 +306,6 @@
         </label>
         <label>Alamat pengantaran
           <textarea id="alamat" rows="3" placeholder="Nama kos / jalan / patokan"></textarea>
-        </label>
-        <label>Pilihan sambal
-          <select id="sambal">
-            <option>Original</option>
-            <option>Pedas Manis</option>
-            <option>Balado</option>
-            <option>Level Setan</option>
-          </select>
-        </label>
         <label>Catatan (opsional)
           <input type="text" id="catatan" placeholder="Contoh: sambal dipisah">
         </label>
@@ -369,6 +342,9 @@
     <a href="#pesan" class="btn full" id="goOrder">Lanjut ke Pemesanan</a>
   </div>
 </aside>
+
+<!-- PERBAIKAN: script utama (keranjang, slider, dll) yang sebelumnya tidak dipanggil -->
+<script src="script.js"></script>
 
 <!-- SCRIPT DARK/LIGHT MODE INSTAN -->
   <script>
