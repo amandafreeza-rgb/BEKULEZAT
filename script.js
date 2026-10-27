@@ -244,46 +244,108 @@ $("nextBtn").addEventListener("click", () => goTo(current + 1));
 $("prevBtn").addEventListener("click", () => goTo(current - 1));
 goTo(0);
 
-/* ---------- 6. CHECKOUT: VALIDASI + KIRIM KE WHATSAPP ---------- */
-$("checkoutBtn").addEventListener("click", () => {
-  const nama = $("nama").value.trim();
-  const hp = $("hp").value.trim();
-  const alamat = $("alamat").value.trim();
-  const sambal = $("sambal").value;
-  const catatan = $("catatan").value.trim();
-  const error = $("formError");
+/* -------- CHECKOUT: LANGSUNG KE WHATSAPP + CATAT ADMIN -------- */
+/* GANTI seluruh blok checkout lama dengan blok ini */
+document.addEventListener("DOMContentLoaded", function () {
+  const checkoutBtn = document.getElementById("checkoutBtn");
+  if (!checkoutBtn) return;
 
-  // Validasi sederhana
-  if (cart.length === 0) return (error.textContent = "Keranjang masih kosong. Tambahkan menu dulu.");
-  if (nama.length < 3) return (error.textContent = "Isi nama lengkap minimal 3 huruf.");
-  if (!/^(\+62|62|0)8[0-9]{8,12}$/.test(hp.replace(/[\s-]/g, "")))
-    return (error.textContent = "Nomor WhatsApp tidak valid. Contoh: 081234567890.");
-  if (alamat.length < 8) return (error.textContent = "Isi alamat pengantaran dengan lengkap.");
-  error.textContent = "";
+  checkoutBtn.addEventListener("click", function () {
+    // 1. Ambil nilai form
+    const nama = document.getElementById("nama")?.value.trim() || "";
+    const hp = document.getElementById("hp")?.value.trim() || "";
+    const alamat = document.getElementById("alamat")?.value.trim() || "";
+    const sambal = document.getElementById("sambal")?.value || "Standard";
+    const catatan = document.getElementById("catatan")?.value.trim() || "";
+    const errorEl = document.getElementById("formError");
 
-  // Susun pesan rapi
-  const total = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
-  const daftar = cart
-    .map((i, n) => `${n + 1}. ${i.name} (${i.variant}) x${i.qty} = ${rupiah(i.price * i.qty)}`)
-    .join("\n");
+    // 2. Validasi
+    if (cart.length === 0) {
+      if (errorEl) errorEl.textContent = "Keranjang masih kosong! Silakan pilih menu dulu.";
+      alert("Keranjang kamu masih kosong, yuk pilih menu dulu!");
+      return;
+    }
+    if (nama.length < 3) {
+      if (errorEl) errorEl.textContent = "Isi nama lengkap minimal 3 karakter.";
+      alert("Mohon isi nama lengkap minimal 3 karakter.");
+      document.getElementById("nama")?.focus();
+      return;
+    }
+    if (!/^(\+62|62|0)8[0-9]{8,12}$/.test(hp.replace(/[\s-]/g, ""))) {
+      if (errorEl) errorEl.textContent = "Nomor WhatsApp tidak valid. Contoh: 089673787320";
+      alert("Nomor WhatsApp tidak valid.");
+      document.getElementById("hp")?.focus();
+      return;
+    }
+    if (alamat.length < 8) {
+      if (errorEl) errorEl.textContent = "Isi alamat pengantaran dengan lengkap.";
+      alert("Mohon isi alamat pengantaran dengan lengkap.");
+      document.getElementById("alamat")?.focus();
+      return;
+    }
+    if (errorEl) errorEl.textContent = "";
 
-  const pesan =
-    `*PESANAN BEKULEZAT*\n\n` +
-    `*Nama:* ${nama}\n` +
-    `*No. WA:* ${hp}\n` +
-    `*Alamat:* ${alamat}\n` +
-    `*Sambal:* ${sambal}\n` +
-    (catatan ? `*Catatan:* ${catatan}\n` : "") +
-    `\n*Daftar Pesanan:*\n${daftar}\n\n` +
-    `*TOTAL: ${rupiah(total)}*\n` +
-    `Pembayaran: QRIS (bukti bayar saya kirim di chat ini)\n\n` +
-    `Terima kasih!`;
+    // 3. Hitung total
+    const totalHarga = cart.reduce((sum, i) => sum + i.price * i.qty, 0);
 
-  window.open(`https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesan)}`, "_blank");
+    // 4. Susun daftar menu
+    const daftarMenu = cart
+      .map(
+        (i, index) =>
+          `${index + 1}. ${i.name} (${i.variant}) x${i.qty} = Rp ${(i.price * i.qty).toLocaleString("id-ID")}`
+      )
+      .join("\n");
+
+    // 5. Susun teks pesan WhatsApp
+    const pesanWA =
+      `*PESANAN BEKULEZAT*\n\n` +
+      `*Nama Pemesan:* ${nama}\n` +
+      `*No. WhatsApp:* ${hp}\n` +
+      `*Alamat Pengiriman:* ${alamat}\n` +
+      `*Level Sambal:* ${sambal}\n` +
+      (catatan ? `*Catatan:* ${catatan}\n` : "") +
+      `\n*Daftar Menu:*\n${daftarMenu}\n\n` +
+      `*Total Pembayaran:* Rp ${totalHarga.toLocaleString("id-ID")}\n\n` +
+      `Bukti pembayaran saya lampirkan di chat ini ya kak.\n` +
+      `Mohon segera diproses, terima kasih!`;
+
+    // 6. URL WhatsApp (pesan WAJIB di-encode dan ditempel sebagai ?text=)
+    const urlWhatsApp = `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(pesanWA)}`;
+
+    // 7. Simpan ke LocalStorage untuk panel admin (dibungkus try/catch agar tidak menghalangi redirect)
+    try {
+      const newOrder = {
+        id: "BK-" + Date.now().toString().slice(-6),
+        tanggal: new Date().toLocaleString("id-ID"),
+        nama,
+        hp,
+        alamat,
+        items: [...cart],
+        total: totalHarga,
+        catatan: `Level Sambal: ${sambal} | Catatan: ${catatan}`,
+        status: "Direct WhatsApp",
+      };
+      const existingOrders = JSON.parse(localStorage.getItem("bekulezat_orders")) || [];
+      existingOrders.unshift(newOrder);
+      localStorage.setItem("bekulezat_orders", JSON.stringify(existingOrders));
+    } catch (err) {
+      console.warn("Gagal menyimpan pesanan ke localStorage:", err);
+    }
+
+    // 8. Buka WhatsApp (langsung dari klik user agar tidak diblokir popup blocker)
+    const win = window.open(urlWhatsApp, "_blank");
+    if (!win) window.location.href = urlWhatsApp; // fallback jika popup diblokir
+
+    // 9. Kosongkan keranjang (pakai cart = [], BUKAN window.cart = [])
+    cart = [];
+    renderCart();
+
+    // 10. Reset tombol produk
+    document.querySelectorAll(".qty-controller").forEach((el) => (el.style.display = "none"));
+    document.querySelectorAll(".card-checkout-btn").forEach((el) => (el.style.display = "none"));
+    document.querySelectorAll(".add-btn").forEach((el) => (el.style.display = "block"));
+  });
 });
-
-// Tampilkan keranjang kosong saat halaman pertama dibuka
-renderCart();
 
 // ========== LOGIKA DARK / LIGHT MODE ==========
 document.addEventListener('DOMContentLoaded', () => {
