@@ -138,22 +138,109 @@ label { display: block; font-weight: 500; font-size: 0.92rem; margin-bottom: 0.8
 label input, label select, label textarea { margin-top: 0.3rem; }
 .error { color: var(--red); font-weight: 700; min-height: 1.4rem; }
 
-/* ========== SLIDER TESTIMONI ========== */
-.slider { display: flex; align-items: center; gap: 0.6rem; max-width: 760px; margin: 1.5rem auto 0; }
-.slider-window { overflow: hidden; flex: 1; }
-.slider-track { display: flex; transition: transform 0.45s ease; }
-.slide { min-width: 100%; text-align: center; padding: 1.5rem 1rem; }
-.slide img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; margin: 0 auto 1rem; border: 3px solid var(--red); }
-.slide blockquote { font-size: 1.1rem; max-width: 50ch; margin: 0 auto 0.8rem; }
-.slide figcaption { color: var(--red); font-weight: 700; }
-.slide-btn {
-  width: 42px; height: 42px; flex-shrink: 0; border-radius: 50%; border: 2px solid var(--red);
-  background: transparent; color: var(--red); font-size: 1.6rem; line-height: 1; cursor: pointer;
+/* ========== STYLING SLIDER TESTIMONI GAMBAR ========== */
+.testimoni-section {
+  padding: 40px 20px;
 }
-.slide-btn:hover { background: var(--red); color: #fff; }
-.dots { display: flex; justify-content: center; gap: 0.5rem; margin-top: 0.6rem; }
-.dots button { width: 10px; height: 10px; border-radius: 50%; border: 0; background: var(--line); cursor: pointer; }
-.dots button.active { background: var(--red); }
+
+.testimonial-slider-container {
+  position: relative;
+  max-width: 500px; /* Ukuran pas untuk screenshot chat HP */
+  margin: 20px auto 0;
+  display: flex;
+  align-items: center;
+}
+
+.slider-wrapper {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 16px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  background-color: #fff;
+}
+
+.slider-track {
+  display: flex;
+  transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+  will-change: transform;
+}
+
+.slide-item {
+  min-width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.slide-item img {
+  width: 100%;
+  height: auto;
+  max-height: 520px;
+  object-fit: contain;
+  border-radius: 12px;
+}
+
+/* Tombol Panah Kiri-Kanan */
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(238, 77, 45, 0.85);
+  color: #fff;
+  border: none;
+  font-size: 16px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.slider-btn:hover {
+  background-color: #ee4d2d;
+  transform: translateY(-50%) scale(1.1);
+}
+
+.prev-btn {
+  left: -15px;
+}
+
+.next-btn {
+  right: -15px;
+}
+
+/* Titik Indikator (Dots) */
+.slider-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 15px;
+}
+
+.slider-dots button {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ddd;
+  cursor: pointer;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+.slider-dots button.active {
+  background-color: #ee4d2d;
+  width: 22px;
+  border-radius: 10px;
+}
 
 /* ========== PEMESANAN & PEMBAYARAN ========== */
 .order-wrap { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.4rem; max-width: 1150px; margin: 1.5rem auto 0; align-items: start; }

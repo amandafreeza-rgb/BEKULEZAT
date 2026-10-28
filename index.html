@@ -250,38 +250,42 @@
     </div>
   </section>
 
-  <!-- ========== TESTIMONI ========== -->
-  <section class="section" id="testimoni">
-    <h2 class="center">Kata Mereka</h2>
-    <p class="sub">Apa kata anak kos tentang keseruan Shaken Frozen Food BekuLezat?</p>
-
-    <div class="slider">
-      <button class="slide-btn" id="prevBtn" aria-label="Sebelumnya">&#10094;</button>
-      <div class="slider-window">
-        <div class="slider-track" id="sliderTrack">
-          <!-- Slide 1 -->
-          <div class="slide">
-            <div class="slide-photos">
-              <img src="https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?w=300" alt="Review 1">
-              <img src="https://images.unsplash.com/photo-1563245372-f21724e3856d?w=300" alt="Review 2">
-            </div>
-            <blockquote>"Seblaknya pedasnya pas, bumbunya meresap. Stok vakumnya juga awet di freezer kosan."</blockquote>
-            <figcaption>Rani, Mahasiswi</figcaption>
-          </div>
-          <!-- Slide 2 -->
-          <div class="slide">
-            <div class="slide-photos">
-              <img src="https://images.unsplash.com/photo-1526318896980-cf78c08b247c?w=300" alt="Review 3">
-            </div>
-            <blockquote>"Pangsit rebus chili oil-nya juara banget buat teman nugas malam-malam. Praktis!"</blockquote>
-            <figcaption>Dimas, Mahasiswa</figcaption>
-          </div>
+  <!-- ========== TESTIMONI PELANGGAN ========== -->
+<section class="section testimoni-section" id="testimoni">
+  <h2 class="center">Testimoni Pelanggan</h2>
+  
+  <div class="testimonial-slider-container">
+    <button class="slider-btn prev-btn" id="prevBtn" type="button" aria-label="Sebelumnya">&#10094;</button>
+    
+    <div class="slider-wrapper">
+      <div class="slider-track" id="sliderTrack">
+        <div class="slide-item">
+          <img src="assets/testimoni 1.png" alt="Testimoni Pelanggan 1">
+        </div>
+        <div class="slide-item">
+          <img src="assets/testimoni 2.png" alt="Testimoni Pelanggan 2">
+        </div>
+        <div class="slide-item">
+          <img src="assets/testimoni 3.png" alt="Testimoni Pelanggan 3">
+        </div>
+        <div class="slide-item">
+          <img src="assets/testimoni 4.png" alt="Testimoni Pelanggan 4">
+        </div>
+        <div class="slide-item">
+          <img src="assets/testimoni 5.png" alt="Testimoni Pelanggan 5">
+        </div>
+        <div class="slide-item">
+          <img src="assets/testimoni 6.png" alt="Testimoni Pelanggan 6">
         </div>
       </div>
-      <button class="slide-btn" id="nextBtn" aria-label="Berikutnya">&#10095;</button>
     </div>
-    <div class="dots" id="sliderDots"></div>
-  </section>
+
+    <button class="slider-btn next-btn" id="nextBtn" type="button" aria-label="Selanjutnya">&#10095;</button>
+  </div>
+  
+  <!-- Titik Indikator Slider akan dibuat otomatis oleh JS -->
+  <div class="slider-dots" id="sliderDots"></div>
+</section>
 
   <!-- ========== FORM PEMESANAN + PEMBAYARAN ========== -->
   <section class="section" id="pesan">
